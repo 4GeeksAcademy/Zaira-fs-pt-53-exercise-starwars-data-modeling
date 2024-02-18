@@ -1,0 +1,41 @@
+#created using app.quickdatabasediagrams.com,
+# see diagram in assets/dbdiagram.png
+
+user
+-----
+id int pk
+username varchar(120) unique
+password varchar(20)
+
+character
+---------
+id int pk
+name varchar(50)
+gender varchar(10)
+birth_year varchar(20)
+
+planet
+------
+id int pk
+name varchar(50)
+climate varchar(20)
+population int
+
+user_favorite
+-------------
+user_id int, fk >- user.id
+favorite_id int, fk >- favorite.id
+
+favorite
+--------
+id int, pk
+user_id int, fk -< user.id
+character_id int, fk -< character.id
+planet_id int, fk -< planet.id
+
+
+#The relationships are as follows:
+#User has a one-to-many relationship with Favorite through the favorites attribute.
+#Character has a one-to-many relationship with Favorite through the favorites attribute.
+#Planet has a one-to-many relationship with Favorite through the favorites attribute.
+#Favorite has many-to-one relationships with User, Character, and Planet.
